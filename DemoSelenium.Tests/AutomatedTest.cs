@@ -33,7 +33,7 @@ namespace DemoSelenium.Tests
             _page.DobInput(DateTime.Now);
             _page.Submit();
 
-            
+            Assert.Contains("", _page.Validator);
 
         }
     }
