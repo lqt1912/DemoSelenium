@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using DemoSelenium.Models;
-using DemoSelenium.Helpers;
 
 namespace DemoSelenium.Controllers
 {
@@ -49,12 +48,12 @@ namespace DemoSelenium.Controllers
             if (ModelState.IsValid)
             {
                 cs.Id = Guid.NewGuid();
+                cs.Dob = DateTime.Now;
                 _context.Customer.Add(cs);
                 _context.SaveChanges();
-                ModelState.Clear();
             }
 
-            return View("Register").WithSuccess("Thành công", "Đăng kí thành công");
+            return RedirectToAction("CustomerList");
         }
 
         public IActionResult CustomerList()

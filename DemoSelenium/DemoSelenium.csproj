@@ -6,13 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Selenium\**" />
-    <Content Remove="Selenium\**" />
-    <EmbeddedResource Remove="Selenium\**" />
-    <None Remove="Selenium\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.8">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -25,6 +18,10 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
     <PackageReference Include="Selenium.Chrome.WebDriver" Version="85.0.0" />
     <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Selenium\" />
   </ItemGroup>
 
 </Project>

@@ -25,16 +25,48 @@ namespace DemoSelenium.Tests
         }
 
         [Fact]
-        public void Register()
+        public void Register0()
         {
-            _page.UsernameInput("addddddd");
-            _page.PasswordInput("aaaaaa");
-            _page.PhoneInput("013242343");
-            _page.DobInput(DateTime.Now);
+            _page.UsernameInput("admin");
+            _page.PasswordInput("adminnnnnnnnnnnnnnn");
+            _page.PhoneInput("0123456780009");
+            _page.Submit();
+            Assert.Contains("CustomerList", _page.Title);
+        }
+
+        [Fact]
+        public void Register1()
+        {
+            _page.UsernameInput("");
+            _page.PasswordInput("adminnnnnnnnnnnnnnn");
+            _page.PhoneInput("0123456780009");
             _page.Submit();
 
-            Assert.Contains("", _page.Validator);
-
+            Assert.Contains("Please enter the name", _page.UsernameValidator);
         }
+
+        [Fact]
+        public void Register2()
+        {
+            _page.UsernameInput("adminnnnnnnnnn");
+            _page.PasswordInput("");
+            _page.PhoneInput("0123456780009");
+            _page.Submit();
+
+            Assert.Contains("Please enter the Password", _page.PasswordValidator);
+        }
+
+        [Fact]
+        public void Register3()
+        {
+            _page.UsernameInput("adminnnnnnnnnn");
+            _page.PasswordInput("");
+            _page.PhoneInput("01234567800aaa");
+            _page.Submit();
+
+            Assert.Contains("UPRN must be numeric", _page.PhoneValidator);
+        }
+
+
     }
 }
